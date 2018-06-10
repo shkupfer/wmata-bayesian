@@ -4,12 +4,14 @@ import httplib
 import urllib
 import os
 import pytz
+import time
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--wmata_api_key', default=os.getenv('WMATA_API_KEY'))
     parser.add_argument('--timezone', default='America/New_York')
+    parser.add_argument('--time_to_sleep', type=int, default=60)
     parser.add_argument('output_dir', default='.')
     args = parser.parse_args()
 
@@ -36,3 +38,5 @@ if __name__ == "__main__":
         outfile = open(outfile_path, 'w')
         outfile.write(data)
         outfile.close()
+
+        time.sleep(args.time_to_sleep)
