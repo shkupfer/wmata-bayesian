@@ -1,0 +1,10 @@
+
+  model {
+  for ( i in 1:Ntotal ) {
+  y[i] ~ dbern( theta[s[i]] )
+  }
+  for ( sIdx in 1:Nsubj ) {
+  theta[sIdx] ~ dbeta( 1 , 1 ) # Using a uniform prior
+  }
+  }
+  
